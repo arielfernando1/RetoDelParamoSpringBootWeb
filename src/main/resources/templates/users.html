@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="header" :: header>
+</div>
+
+<body>
+	<div th:replace="navbar" :: navbar>
+	</div>
+	<table id="mytable">
+		<thead class="thead-dark">
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Correo</th>
+				<th>Encrypted Password</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${userList}">
+				<td th:text="${user.id}">ID</td>
+				<td th:text="${user.firstname}">Nombre</td>
+				<td th:text="${user.lastname}">Apellido</td>
+				<td th:text="${user.email}">Correo</td>
+				<td th:text="${user.password}">Encrypted password</td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.5/datatables.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#mytable').DataTable();
+
+		});
+
+	</script>
+</body>
+<div th:replace="footer" :: footer>
+</div>
+
+</html>
