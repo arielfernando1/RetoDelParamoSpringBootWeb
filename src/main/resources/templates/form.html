@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="header" :: header>
+</div>
+
+
+<body>
+	<div th:replace="navbar" :: navbar>
+	</div>
+
+	<div class="container">
+		<div class="alert alert-primary" role="alert">
+			Por favor llena el siguiente formulario y firma el documento PDF generado para completar tu
+			inscripcion.
+		</div>
+		<form class="row g-3" action="#" th:action="@{/participar}" th:object="${participante}" method="post">
+			<div class="col-md-6">
+				<label for="firstname" class="form-label">Nombre</label>
+				<input type="text" th:field="*{nombre}" class="form-control" id="firstname" name="firstname" required>
+			</div>
+			<div class="col-md-6">
+				<label for="lastname" class="form-label">Apellidos</label>
+				<input type="text" th:field="*{apellidos}" class="form-control" id="lastname" name="lastname" required>
+			</div>
+			<div class="col-md-6">
+				<label for="cc" class="form-label">Cedula</label>
+				<input type="text" th:field="*{cedula}" class="form-control" id="cc" name="cc" required>
+			</div>
+			<div class="col-md-6">
+				<label for="ciudadania" class="form-label">Ciudadania</label>
+				<select th:field="*{ciudadania}" class="form-control" aria-label=".form-select-sm example" required>
+					<option value="ecuatoriana">Ecuatoriana</option>
+					<option value="colombiana">Colombiana</option>
+					<option value="otros">Otros</option>
+				</select>
+			</div>
+			<div class="col-md-6">
+				<label for="edad" class="form-label">Edad</label>
+				<input type="number" th:field="*{edad}" class="form-control" id="edad" name="edad" required>
+			</div>
+			<div class="col-md-6">
+				<label for="talla" class="form-label">Genero</label>
+				<select th:field="*{genero}"id="genero" class="form-control" aria-label="Genero" name="genero" required>
+					<option value="M">Masculino</option>
+					<option value="F">Femenino</option>
+				</select>
+			</div>
+			<div class="col-md-6">
+				<label for="emergencia" class="form-label">En caso de emergencia llamar a</label>
+				<input type="text" th:field="*{numeroEmergencia}" class="form-control" id="emergencia"
+					name="emergencia" required>
+			</div>
+			<div class="col-md-6">
+				<label for="email" class="form-label">E-mail</label>
+				<input type="email" th:field="*{email}" class="form-control" id="email" name="email" required>
+			</div>
+			<div class="col-md-6">
+				<label for="telefono" class="form-label">Telefono</label>
+				<input type="text" th:field="*{telefono}" class="form-control" id="telefono" name="telefono" required>
+			</div>
+			<div class="col-md-6">
+				<label for="domicilio" class="form-label">Domicilio</label>
+				<input type="text" th:field="*{domicilio}" class="form-control" id="domicilio" name="domicilio" required>
+			</div>
+			<div class="col-md-6">
+				<label for="tipoSangre" class="form-label">Tipo de sangre</label>
+				<select th:field="*{tipoSangre}" id="tipoSangre" class="form-control" aria-label="Tipo de sangre" name="sangre">
+					<option value="A">Tipo A</option>
+					<option value="B">Tipo B</option>
+					<option value="AB">Tipo AB</option>
+					<option value="O">Tipo O</option>
+				</select>
+			</div>
+			<div class="col-md-6">
+				<label for="talla" class="form-label">Talla de Jersey</label>
+				<select th:field="*{talla}" id="talla" class="form-control" aria-label="Talla" name="talla">
+					<option value="S">S</option>
+					<option value="M">M</option>
+					<option value="G">G</option>
+				</select>
+			</div>
+			<div class="container-sm">
+				<h4>Deslinde de responsabilidades</h4>
+				<li>El participante acepta el presente reglamento y declara que se encuenntra fisicamente apto y
+					entrenado para participar en esta actividad.</li>
+				<li>El participante toma conocimiento y acepta voluntariamente, que el Reto del Paramo, los sponsors,
+					auspiciantes y/o sus empresas contratadas o vinculadas NO toman a su cargo ni se responsabilizan por
+					ningun tipo de indeminizacion, reclamo, costo, daño y/o perjuicio reclamad, incluyendo y no limitado
+					a daños por accidentes, daños materiales, fisicos, psiquicos o morales con motivo y en ocasion de la
+					actividad fisica en la que participará. </li>
+				<li>El participante autoriza a las organizaciones utilizar, reproducir, distribuir y/o publicar
+					fotografias, peliculas, videos, grabaciones y/o cualquier otro medio, tomadas con motivo y en
+					ocasión del presente ciclo aventura, sin compensación económica alguna a favor del participante</li>
+				<li>La organizacion podrá suspender el evento por cuestiones de seguridad publica, actos publicos,
+					vandalismo y/o razones de fuerza mayor.</li>
+				<li>La organizacion no reembolsara el importe de la inscripcion a los participantes que decidan no
+					participar una vez inscritos, cualquiera sea el motivo.</li>
+				<li>La participacion en esta carrera implica su responsabilidad por los datos suministrados, su
+					aceptacion plena del reglamento, y el pago de los gastos de inscripcion.</li>
+			</div>
+			<div class="col-12">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="gridCheck">
+					<label class="form-check-label" for="gridCheck">
+						He leido y acepto el <a href="/reglamento">reglamento</a> de la carrera.
+					</label>
+				</div>
+			</div>
+			<div class="col-12">
+				<button type="submit" class="btn btn-primary">Inscribirse</button>
+			</div>
+		</form>
+
+	</div>
+
+</body>
+<div th:replace="footer" :: footer>
+</div>
+
+</html>

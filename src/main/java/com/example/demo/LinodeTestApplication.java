@@ -9,8 +9,6 @@ public class LinodeTestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LinodeTestApplication.class, args);
 
-
 	}
-	
 
 }

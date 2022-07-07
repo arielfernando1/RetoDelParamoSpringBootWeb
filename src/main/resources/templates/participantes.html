@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="header" :: header>
+</div>
+
+<body>
+	<div th:replace="navbar" :: navbar>
+	</div>
+	<table id="mytable">
+		<thead class="thead-dark">
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Edad</th>
+				<th>Numero emergencia</th>
+				<th>Email</th>
+				<th>Domicilio</th>
+				<th>Tipo sangre</th>
+				<th>Talla</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="participante : ${partList}">
+				<td th:text="${participante.id}">ID</td>
+				<td th:text="${participante.nombre}">Nombre</td>
+				<td th:text="${participante.apellidos}">Apellidos</td>
+				<td th:text="${participante.edad}">Edad</td>
+				<td th:text="${participante.numeroEmergencia}">Numero de emergencia</td>
+				<td th:text="${participante.email}">Email</td>
+				<td th:text="${participante.edad}">Domicilio</td>
+				<td th:text="${participante.tipoSangre}">Tipo Sangre</td>
+				<td th:text="${participante.talla}">Talla</td>
+			</tr>
+		</tbody>
+		</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.5/datatables.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#mytable').DataTable();
+
+		});
+
+	</script>
+</body>
+<div th:replace="footer" :: footer>
+</div>
+
+</html>

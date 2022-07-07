@@ -26,11 +26,6 @@ public String Calendar() {
 public String Gallerry() {
 	return "gallery";
 }
-@GetMapping("/form")
-public String Form(Model model) {
-    model.addAttribute("user", new User());
-	return "singup";
-}
 @GetMapping("/users")
 public String Users(Model model) {
 	List<User> userList = service.ListAll();

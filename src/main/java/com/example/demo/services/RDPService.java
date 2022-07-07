@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.User;
+
 import com.example.demo.repos.UserRepo;
 
 @Service
@@ -14,6 +15,7 @@ import com.example.demo.repos.UserRepo;
 public class RDPService {
 	@Autowired
 	UserRepo repo;
+
 	public List <User> ListAll(){
 		return repo.findAll();	
 	}
