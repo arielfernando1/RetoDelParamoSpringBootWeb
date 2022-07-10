@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<div th:replace="header" :: header>
+<div th:replace="fragments/header" :: header>
 </div>
 
 
 <body>
-	<div th:replace="navbar" :: navbar>
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v14.0"
+		nonce="DvehlgDp"></script>
+	<div th:replace="fragments/navbar" :: navbar>
 	</div>
-	<!-- <div class="container00">
-        <img th:src="@{img/portada1.jpg}">
-    </div>-->
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -39,8 +39,34 @@
 		</a>
 	</div>
 	</div>
+	<hr>
+	<div class="fb-post" data-href="https://www.facebook.com/elretodelparamo/photos/a.116093039737941/568667424480498/"
+		data-width="750" data-show-text="true">
+		<blockquote cite="https://www.facebook.com/elretodelparamo/photos/a.116093039737941/568667424480498/?type=3"
+			class="fb-xfbml-parse-ignore">
+			<p>Un agradecimiento tremendo a la familia Juan Chiles, sin ellos no habría existido el evento.
+				A todos nuestros...</p>Publicado por <a href="https://www.facebook.com/elretodelparamo/">El Reto del
+				Páramo</a> en&nbsp;<a
+				href="https://www.facebook.com/elretodelparamo/photos/a.116093039737941/568667424480498/?type=3">Lunes,
+				20 de septiembre de 2021</a>
+		</blockquote>
+	</div>
+	<div class="fb-post" data-href="https://www.facebook.com/ErnestoCiclismo/videos/158948746401751" data-width="750"
+		data-show-text="true">
+		<blockquote cite="https://www.facebook.com/ErnestoCiclismo/videos/158948746401751/"
+			class="fb-xfbml-parse-ignore">
+			<p>CICLISMO SOLO CICLISMO.......
+				Joel Burbano del team Sin Fronteras ganó hoy el Reto del Parámo mañana viaja al mundial de ciclismo,
+				segundo lugar para Pablo Caicedo Best-Pc tercero José Casanova Sin Fronteras</p>Publicado por <a
+				href="https://www.facebook.com/ErnestoCiclismo">Ernesto Almeida</a> en&nbsp;<a
+				href="https://www.facebook.com/ErnestoCiclismo/videos/158948746401751/">Domingo, 19 de septiembre de
+				2021</a>
+		</blockquote>
+	</div>
 
-	<div th:replace="footer" :: footer>
+
+
+	<div th:replace="fragments/footer" :: footer>
 </body>
 
 

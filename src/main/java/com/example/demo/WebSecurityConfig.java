@@ -36,7 +36,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 @Override
 protected void configure(HttpSecurity http) throws Exception {
 	http.authorizeRequests()
-		.antMatchers("/**","/css/**","/img/**","favicon/favicon.ico").permitAll()
+		.antMatchers("/","/calendar","/gallery","/form","/participar","/reglamento","/css/**","/img/**","favicon/favicon.ico").permitAll()
 		.anyRequest().authenticated()
 		.and()
 	.formLogin()

@@ -10,20 +10,18 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.coyote.http11.Http11AprProtocol;
-import org.apache.pdfbox.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import com.example.demo.entities.Evento;
 import com.example.demo.entities.Participante;
 import com.example.demo.pdf.PDFExporter;
+import com.example.demo.services.EventoService;
 import com.example.demo.services.ParticipanteService;
 import com.itextpdf.text.DocumentException;
 
@@ -31,11 +29,20 @@ import com.itextpdf.text.DocumentException;
 public class ParticipanteController {
 	@Autowired
 	private ParticipanteService service;
+	@Autowired
+	private EventoService service1;
 
 	@GetMapping("/form")
 	public String Form(Model model) {
+		List<Evento> evtList = service1.ListAll();
+		model.addAttribute("evento", evtList);
 		model.addAttribute("participante", new Participante());
 		return "form";
+	}
+
+	@GetMapping("/reglamento")
+	public String Reglamento() {
+		return "reglamento";
 	}
 
 	@GetMapping("/participantes")
@@ -46,8 +53,9 @@ public class ParticipanteController {
 	}
 
 	@RequestMapping(value = "/participar", method = RequestMethod.POST)
-	public void SaveParticipante(@ModelAttribute("participante") Participante part, @RequestParam Map<String, String> reqParam,
-			HttpServletResponse response) throws DocumentException, IOException {
+	public void SaveParticipante(@ModelAttribute("participante") Participante part,
+			@RequestParam Map<String, String> reqParam, HttpServletResponse response)
+			throws DocumentException, IOException {
 		service.Save(part);
 		response.setContentType("application/pdf");
 		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
@@ -59,7 +67,7 @@ public class ParticipanteController {
 
 		List<Participante> listaParticipantes = service.ListAll();
 		PDFExporter exporter = new PDFExporter(listaParticipantes);
-		exporter.export(response,reqParam);
+		exporter.export(response, reqParam);
 	}
 
 	@RequestMapping("/success")

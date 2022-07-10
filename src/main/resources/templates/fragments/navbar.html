@@ -1,6 +1,6 @@
 <div th:fragment="navbar">
 	<nav class="navbar navbar-dark navbar-expand-lg shadow-lg p-3 mb-5 rounded" style="background-color: #89eb00;">
-		<a class="navbar-brand" href="/"><img  th:src="@{img/logo.jpg}" width="100px" height="100px"></a>
+		<a class="navbar-brand" href="/"><img th:src="@{img/logo.jpg}" width="100px" height="100px"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -9,11 +9,14 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="/calendar">Calendario</a>
+					<a class="nav-link" href="/calendar">
+						<i class="bi bi-calendar-check-fill"></i> Calendario</a>
 				</li>
+
 				<li class="nav-item">
-					<a class="nav-link" href="/gallery">Galeria</a>
+					<a class="nav-link" href="/gallery"><i class="bi bi-image"></i> Galería</a>
 				</li>
+
 				<!--
                 <li class="nav-item">
                     <a class="nav-link" href="/form">Registrarse</a>
@@ -42,7 +45,7 @@
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<form action="/form">
-					<button type="submit" hre class="btn btn-dark">Inscripciones</button>
+					<button type="submit" hre class="btn btn-dark"><i class="bi bi-file-text"></i> Inscripciones</button>
 				</form>
 			</ul>
 		</div>
