@@ -1,30 +1,29 @@
 package com.example.demo.entities;
 
 import java.util.Calendar;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class Evento {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String descripcion;
 	@Temporal(TemporalType.DATE)
 	private Calendar fecha;
-	@OneToOne(mappedBy = "evento")
-	private Participante participante;
+	@OneToMany(mappedBy = "evento")
+	private List<Participante> participante;
 
-	public Evento(Long id, String nombre, String descripcion, Calendar fecha, Participante participante) {
+	public Evento(Long id, String nombre, String descripcion, Calendar fecha, List<Participante> participante) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -69,12 +68,14 @@ public class Evento {
 		this.fecha = fecha;
 	}
 
-	public Participante getParticipante() {
+	public List<Participante> getParticipante() {
 		return participante;
 	}
 
-	public void setParticipante(Participante participante) {
+	public void setParticipante(List<Participante> participante) {
 		this.participante = participante;
 	}
+
+
 
 }

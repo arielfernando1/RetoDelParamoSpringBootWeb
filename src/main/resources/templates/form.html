@@ -16,7 +16,7 @@
 		<form class="row g-3" action="#" th:action="@{/participar}" th:object="${participante}" method="post">
 			<div class="col-md-6">
 				<label for="evento" class="form-label">Evento</label>
-				<select th:field="*{evento}" id="evento" class="form-control" aria-label="Evento" name="evento">
+				<select th:field="*{evento.id}" id="evento" class="form-control" aria-label="Evento" name="evento">
 					<option  th:each="evt : ${evento}" th:text="${evt.nombre}" th:value="${evt.id}"></option>
 				</select>
 			</div>

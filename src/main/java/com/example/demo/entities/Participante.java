@@ -1,17 +1,16 @@
 package com.example.demo.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Participante {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String apellidos;
@@ -25,8 +24,8 @@ public class Participante {
 	private String domicilio;
 	private String tipoSangre;
 	private String talla;
-	@OneToOne
-	@JoinColumn(name = "id_evento")
+	@ManyToOne
+	@JoinColumn(name="evento_id")
 	private Evento evento;
 
 	public Participante(Long id, String nombre, String apellidos, String cedula, String ciudadania, String edad,
