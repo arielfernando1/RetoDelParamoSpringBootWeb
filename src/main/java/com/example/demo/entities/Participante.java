@@ -24,13 +24,16 @@ public class Participante {
 	private String domicilio;
 	private String tipoSangre;
 	private String talla;
+	private String categoria;
+	private String team;
+	private String codigo;
 	@ManyToOne
-	@JoinColumn(name="evento_id")
+	@JoinColumn(name = "evento_id")
 	private Evento evento;
 
 	public Participante(Long id, String nombre, String apellidos, String cedula, String ciudadania, String edad,
 			String genero, String numeroEmergencia, String email, String telefono, String domicilio, String tipoSangre,
-			String talla, Evento evento) {
+			String talla, String categoria, String team, Evento evento, String codigo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -46,6 +49,7 @@ public class Participante {
 		this.tipoSangre = tipoSangre;
 		this.talla = talla;
 		this.evento = evento;
+		this.codigo = codigo;
 	}
 
 	public Participante() {
@@ -163,4 +167,29 @@ public class Participante {
 	public void setEvento(Evento evento) {
 		this.evento = evento;
 	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public String getTeam() {
+		return team;
+	}
+
+	public void setTeam(String team) {
+		this.team = team;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 }
