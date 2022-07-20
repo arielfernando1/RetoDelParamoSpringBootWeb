@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entities.Evento;
 import com.example.demo.entities.Participante;
 import com.example.demo.pdf.PDFExporter;
+import com.example.demo.pdf.Reporter;
 import com.example.demo.services.EventoService;
 import com.example.demo.services.ParticipanteService;
 import com.itextpdf.text.DocumentException;
@@ -75,7 +75,7 @@ public class ParticipanteController {
 		return "success";
 	}
 
-	@GetMapping("/pdf")
+	@GetMapping("/reportar")
 	public void Pdf(HttpServletResponse response) throws DocumentException, IOException {
 
 		response.setContentType("application/pdf");
@@ -83,12 +83,12 @@ public class ParticipanteController {
 		String currentDateTime = dateFormatter.format(new Date());
 
 		String headerKey = "Content-Disposition";
-		String headerValue = "attachment; filename=formulario_" + currentDateTime + ".pdf";
+		String headerValue = "attachment; filename=reporte_" + currentDateTime + ".pdf";
 		response.setHeader(headerKey, headerValue);
 
 		List<Participante> listaParticipantes = service.ListAll();
-		PDFExporter exporter = new PDFExporter(listaParticipantes);
-		// exporter.export(response, );
+		Reporter repo = new Reporter(listaParticipantes);
+		repo.exportPDF(response);
 
 	}
 
